@@ -5,13 +5,19 @@ import 'package:tadbur/models/surah.dart';
 class SurrahPage extends StatelessWidget {
   final List<Surah> surah;
   final int surahid;
-  const SurrahPage({Key ?key,required this.surah,required this.surahid}) : super(key: key);
+  const SurrahPage({Key? key, required this.surah, required this.surahid})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final list = surah.where((element) => element.surahId == surahid).toList();
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(
+          title: Text(
+            'Tadbur App',
+          ),
+        ),
         body: SingleChildScrollView(
           child: Center(
             child: Padding(
@@ -25,9 +31,15 @@ class SurrahPage extends StatelessWidget {
                 children: list
                     .map((e) {
                       return ListTile(
-                        title: Text(e.orignalArabicText),
+                        title: Text(
+                          e.orignalArabicText,
+                          style: TextStyle(fontFamily: 'Amiri'),
+                        ),
                         leading: CircleAvatar(
-                          child: Text('${e.ayahNo}'),
+                          child: Text(
+                            '${e.ayahNo}',
+                            style: TextStyle(fontFamily: 'Amiri'),
+                          ),
                         ),
                       );
                     })

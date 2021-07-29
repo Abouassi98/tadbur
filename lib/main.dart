@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
-import 'Screens/Welcome/welcome_screen.dart';
+import 'package:tadbur/Screens/HomePage/homePage_screen.dart';
+//import 'Screens/Welcome/welcome_screen.dart';
 import 'constants.dart';
-
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
       ),
       locale: Locale('ar', 'SA'),
       debugShowCheckedModeBanner: false,
-      home: WelcomeScreen(),
+      home: HomeScreen(),
     );
   }
 }

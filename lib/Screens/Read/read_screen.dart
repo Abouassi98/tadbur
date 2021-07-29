@@ -1,10 +1,8 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:tadbur/Screens/Juzz/components/background.dart';
-import 'package:tadbur/components/rounded_button.dart';
-
 import 'package:tadbur/models/surah.dart';
 
 import '../surah_page.dart';
@@ -61,7 +59,6 @@ class _ReadScreenState extends State<ReadScreen> {
   bool load = true;
   @override
   void didChangeDependencies() async {
-  
     super.didChangeDependencies();
     if (load) {
       await loadSurah();
@@ -75,42 +72,95 @@ class _ReadScreenState extends State<ReadScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Tadbur App'),
-      ),
-      body: load
-          ? Center(child: CircularProgressIndicator())
-          : Background(
-              child: Container(
-                  child: GridView.builder(
-                      padding: EdgeInsets.only(
-                          top: 25, bottom: 25, left: 5, right: 5),
-                      itemCount: list2.length,
-                      gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                        maxCrossAxisExtent: 200,
-                        crossAxisSpacing: 10.0,
-                        mainAxisSpacing: 10.0,
-                      ),
-                      itemBuilder: (context, index) {
-                        return new Container(
-                          child: new RoundedButton(
-                            text: list2[index],
-                            press: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) {
-                                    return SurrahPage(
-                                      surah: surahList,
-                                      surahid: surahList[index].id,
-                                    );
-                                  },
-                                ),
-                              );
-                            },
+        appBar: AppBar(
+          title: Text('Tadbur App'),
+        ),
+        body: load
+            ? Center(child: CircularProgressIndicator())
+            : Background(
+                child: Container(
+                child: ListView.builder(
+                  padding: EdgeInsets.only(top: 10),
+                  itemCount: list2.length,
+                  itemBuilder: (context, index) {
+                    return Container(
+                      child: new InkWell(
+                        child: Container(
+                          child: Text(
+                            '${list2[index]}',
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 30,
+                                fontFamily: 'Amiri'),
                           ),
-                        );
-                      }))),
-    );
+                          padding: EdgeInsets.only(right: 20),
+                          decoration: BoxDecoration(
+                              border: Border.all(color: Colors.black),
+                              borderRadius: BorderRadius.circular(20),
+                              color: Color.fromRGBO(212, 175, 55, 1)),
+                        ),
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) {
+                                return SurrahPage(
+                                  surah: surahList,
+                                  surahid: surahList[index].id,
+                                );
+                              },
+                            ),
+                          );
+                        },
+                      ),
+                    );
+                  },
+                ),
+                // child: LayoutBuilder(
+                //   builder: (BuildContext context, BoxConstraints constraint) {
+                //     var constraints;
+                //     return SingleChildScrollView(
+                //       child: (ConstrainedBox(
+                //         constraints: BoxConstraints.tightFor(height: max(500, constraints.maxHeight)),
+                //         child: Column(children: <Widget>[
+
+                //         ],),
+                //       )),
+                //     );
+                //   },
+                // ),
+                // child: GridView.builder(
+                //     padding: EdgeInsets.only(
+                //         top: 25, bottom: 25, left: 5, right: 5),
+                //     itemCount: list2.length,
+                //     gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                //       maxCrossAxisExtent: 400,
+                //       crossAxisSpacing: 10.0,
+                //       mainAxisSpacing: 10.0,
+                //     ),
+                //     itemBuilder: (context, index) {
+                //       return new Container(
+                //         child: new RaisedButton(
+                //           shape: RoundedRectangleBorder(
+                //             borderRadius: BorderRadius.circular(10),
+                //           ),
+                //           child: Text(list2[index]),
+                //           onPressed: () {
+                //             Navigator.push(
+                //               context,
+                //               MaterialPageRoute(
+                //                 builder: (context) {
+                //                   return SurrahPage(
+                //                     surah: surahList,
+                //                     surahid: surahList[index].id,
+                //                   );
+                //                 },
+                //               ),
+                //             );
+                //           },
+                //         ),
+                //       );
+                //     }))),
+              )));
   }
 }

@@ -20,7 +20,6 @@ class SearchController extends BaseController {
 
   @override
   void onInit() async {
-    // TODO: implement onInit
     super.onInit();
     setState(ViewState.busy);
     await loadSurah();
@@ -70,12 +69,12 @@ class SearchController extends BaseController {
         surahList.forEach((surah) {
           int verseNumber = surah.ayahNo;
           if (verseNumber > 0) {
-            String normalisedVWord = surah.orignalArabicText;
+            String normalisedVWord = surah.arabicText;
             if (normalisedVWord.contains(normalisedWord)) {
               _repeated.value += 1;
               verseNumber = verseNumber == 0 ? 1 : verseNumber;
-              foundedVerses.add(Verse(
-                  verseNumber, surah.orignalArabicText, surah, surahList));
+              foundedVerses
+                  .add(Verse(verseNumber, surah.arabicText, surah, surahList));
             }
           }
         });

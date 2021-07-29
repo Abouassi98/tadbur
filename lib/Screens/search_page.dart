@@ -5,7 +5,6 @@ import 'package:tadbur/components/loading_widget.dart';
 import 'package:tadbur/components/rounded_numbers.dart';
 import 'package:tadbur/controllers/search_controller.dart';
 import 'package:tadbur/models/verse.dart';
-
 import '../constants.dart';
 
 class SearchPage extends StatelessWidget {
@@ -15,17 +14,20 @@ class SearchPage extends StatelessWidget {
     final Verse verse = _controller.foundedVerses[index];
     return InkWell(
       onTap: () {
-        Navigator.of(context)
-            .push(MaterialPageRoute(builder: (_) => SurrahPage(surah: verse.surahModel,surahid: verse.surah.surahId,)));
+        Navigator.of(context).push(MaterialPageRoute(
+            builder: (_) => SurrahPage(
+                  surah: verse.surahModel,
+                  surahid: verse.surah.surahId,
+                )));
       },
       child: Card(
         child: ListTile(
           subtitle: SelectableText(
-            verse.text,
+            verse.surah.orignalArabicText,
             style: kTextStyle,
           ),
           title: SelectableText(
-            verse.surah.orignalArabicText,
+            verse.surah.surahNameArabic,
             style: kTextStyle,
           ),
           leading: IconCircularNum(
@@ -40,6 +42,11 @@ class SearchPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'Tadbur App',
+        ),
+      ),
       body: Obx(
         () => SafeArea(
           child: _controller.isBusy
@@ -65,7 +72,7 @@ class SearchPage extends StatelessWidget {
                       Card(
                         child: ListTile(
                           title: Text(
-                            'تكررت ${_controller.repeatCount}',
+                            'عدد مرات التكرار ${_controller.repeatCount}',
                             textAlign: TextAlign.center,
                             style: kTextStyle,
                           ),

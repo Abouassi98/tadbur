@@ -11,6 +11,4 @@ var kWhiteTextStyle = TextStyle(
   fontWeight: FontWeight.normal,
   color: Colors.white,
 );
-const PRIMARY_COLOR = Color(
-  0xFFEA1556,
-);
+const PRIMARY_COLOR = Color.fromRGBO(212, 175, 55, 1);

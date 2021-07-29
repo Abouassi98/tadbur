@@ -4,12 +4,12 @@ import 'package:tadbur/constants.dart';
 class RoundedButton extends StatelessWidget {
   final String text;
   final VoidCallback press;
-  final Color color, textColor;
+  final Color color;
   const RoundedButton({
     required this.text,
     required this.press,
     this.color = kPrimaryColor,
-    this.textColor = Colors.white,
+    //this.textColor = Colors.white,
   });
 
   @override
@@ -26,7 +26,11 @@ class RoundedButton extends StatelessWidget {
           onPressed: press,
           child: Text(
             text,
-            style: TextStyle(color: textColor, fontSize: 18),
+            style: TextStyle(
+              //color: textColor,
+              fontSize: 20,
+              fontFamily: 'Amiri',
+            ),
           ),
         ),
       ),

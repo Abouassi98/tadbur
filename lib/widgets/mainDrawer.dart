@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:tadbur/Screens/Juzz/juzz_screen.dart';
+import 'package:tadbur/Screens/Read/read_screen.dart';
+import 'package:tadbur/Screens/search_page.dart';
+import 'package:tadbur/Screens/listen/listen.dart';
 
 class MainDrawer extends StatelessWidget {
   @override
@@ -23,15 +25,18 @@ class MainDrawer extends StatelessWidget {
         ListTile(
           leading: Icon(Icons.search, size: 26),
           title: Text(
-            'Search',
+            'البحث',
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
-          onTap: () {},
+          onTap: () {
+            Navigator.of(context)
+                .push(MaterialPageRoute(builder: (_) => SearchPage()));
+          },
         ),
         ListTile(
-          leading: Icon(Icons.star, size: 26),
+          leading: Icon(Icons.book, size: 26),
           title: Text(
-            'Juzz',
+            'القراءة',
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
           onTap: () {
@@ -39,27 +44,28 @@ class MainDrawer extends StatelessWidget {
               context,
               MaterialPageRoute(
                 builder: (context) {
-                  return JuzzScreen();
+                  return ReadScreen();
                 },
               ),
             );
           },
         ),
         ListTile(
-          leading: Icon(Icons.book, size: 26),
-          title: Text(
-            'Read',
-            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-          ),
-          onTap: () {},
-        ),
-        ListTile(
           leading: Icon(Icons.hearing, size: 26),
           title: Text(
-            'Listen',
+            'التعرف على القارئ',
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
-          onTap: () {},
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) {
+                  return ListenScreen();
+                },
+              ),
+            );
+          },
         ),
       ],
     ));

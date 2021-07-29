@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class IconCircularNum extends StatelessWidget {
-  final int ?number;
+  final int? number;
 
   IconCircularNum({@required this.number});
 
@@ -19,7 +19,7 @@ class IconCircularNum extends StatelessWidget {
         height: 50.0,
       ),
       decoration: BoxDecoration(
-        color: Color(0xFFEA1556),
+        color: Color.fromRGBO(212, 175, 55, 1),
         shape: BoxShape.circle,
       ),
     );

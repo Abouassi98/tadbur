@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:tadbur/Screens/Login/login_screen.dart';
 import 'package:tadbur/Screens/Signup/components/background.dart';
-import 'package:tadbur/Screens/Signup/components/or_divider.dart';
-// import 'package:tadbur/Screens/Signup/components/social_icon.dart';
 import 'package:tadbur/components/already_have_an_account_acheck.dart';
 import 'package:tadbur/components/rounded_button.dart';
 import 'package:tadbur/components/rounded_input_field.dart';
 import 'package:tadbur/components/rounded_password_field.dart';
-//import 'package:flutter_svg/svg.dart';
 
 class Body extends StatelessWidget {
   @override

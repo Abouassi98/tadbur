@@ -17,12 +17,12 @@ class Background extends StatelessWidget {
       child: Stack(
         alignment: Alignment.center,
         children: <Widget>[
-          Container(
-            constraints: BoxConstraints.expand(),
-            decoration: BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage('homebg.jpg'), fit: BoxFit.cover)),
-          ),
+          // Container(
+          //   constraints: BoxConstraints.expand(),
+          //   decoration: BoxDecoration(
+          //       image: DecorationImage(
+          //           image: AssetImage('homebg.jpg'), fit: BoxFit.cover)),
+          // ),
           Positioned(top: 0, left: 0, child: Text('')),
           Positioned(bottom: 0, right: 0, child: Text('')),
           child,
