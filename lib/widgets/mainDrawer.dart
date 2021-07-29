@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:tadbur/Screens/Read/read_screen.dart';
 import 'package:tadbur/Screens/search_page.dart';
-import 'package:tadbur/Screens/listen/listen.dart';
+
+import 'package:url_launcher/url_launcher.dart';
 
 class MainDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+      final String _url = 'http://192.168.1.185:8501';
     return Drawer(
         child: Column(
       children: <Widget>[
@@ -56,15 +58,15 @@ class MainDrawer extends StatelessWidget {
             'التعرف على القارئ',
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
-          onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) {
-                  return ListenScreen();
-                },
-              ),
-            );
+          onTap: () async{
+                 await canLaunch(_url)
+                              ? await launch(_url,
+                                  forceSafariVC: false,
+                                  forceWebView: true,
+                                  headers: <String, String>{
+                                      'header_key': 'header_value'
+                                    })
+                              : throw 'Could not launch $_url';
           },
         ),
       ],
